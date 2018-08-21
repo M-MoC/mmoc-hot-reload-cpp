@@ -1,0 +1,2 @@
+gdb "main.exe"
+pause
