@@ -15,7 +15,7 @@ mmocPORT std::string func(std::vector<int>& intvec)
 		accum*=-1;
 	
 	std::string s;
-	for(int i=0;i<=accum;++i)
+	for(int i=0;i<accum;++i)
 		s += (i%50?"":"\n") += (i%5?"":" ") += "*";
 	
 	return s;
