@@ -92,7 +92,11 @@ mmocPORT Dll::Dll() {}
 mmocPORT Dll::~Dll() {}
 
 mmocPORT bool Dll::load(std::string pathname_in)
-	{ pathname=pathname_in; return (impl->handle=LoadLibraryA(pathname.data()))!=NULL; }
+{
+	pathname=pathname_in;
+	impl->handle=LoadLibraryExA(pathname.data(),NULL,LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
+	return impl->handle!=NULL;
+}
 mmocPORT const std::string& Dll::get_pathname() const
 	{ return pathname; }
 mmocPORT void* Dll::get(std::string name)

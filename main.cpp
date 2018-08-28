@@ -39,10 +39,10 @@ int main()
 	
 	//reloading same dll? closing nonexistent dll? THINK ABOUT
 	
-	auto load_func_dll=[&]()
+	auto load_func_dll=[&]()-> void
 	{
 		std::cout<<"loading func.dll...\n";
-		if(dll.load("func.dll")==NULL)
+		if(!dll.load("func.dll"))
 			{ std::cout<<"failed to load dll.\n"; return; }
 		std::cout<<"success!\ngetting func...\n";
 		func=reinterpret_cast<decltype(func)>(dll.get("func"));
@@ -51,9 +51,9 @@ int main()
 		std::cout<<"succcess! func now loaded.\n";
 	};
 	
-	load_func_dll();
+	//load_func_dll();
 	
-	auto invoke_func_compile=[&]()
+	auto invoke_func_compile=[&]()-> void
 	{
 		std::cout<<"attempting to run \"compile func.bat\"...\n";
 		mmoc::Process compile;
@@ -96,7 +96,7 @@ int main()
 				;
 			std::getline(std::cin,input);
 			std::vector<std::string> str_args=split(input);
-			if(str_args[0]!="esc" && str_args[0]=="q")
+			if(str_args[0]!="esc" && str_args[0]!="q")
 			{
 				std::vector<int> args;
 				bool retry=false;for(int i=0;i<str_args.size();++i)

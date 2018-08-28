@@ -20,9 +20,8 @@ namespace priv
 
 class mmocPORT Process
 {
-	enum Status { GoodExit, Running,  };
-	std::string pathname,args;
 	std::unique_ptr<priv::Process> impl;
+	std::string pathname,args;
 public:
 	Process(); //for std::unique_ptr
 	~Process(); //for std::unique_ptr
